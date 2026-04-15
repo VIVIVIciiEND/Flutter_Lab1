@@ -1,15 +1,20 @@
 import 'dart:io';
 import 'package:todo_ap/todo.dart';
 import 'package:todo_ap/todo_repository.dart';
+import 'package:ansicolor/ansicolor.dart';
 
+final AnsiPen greenPen = AnsiPen()..green() ;
+final AnsiPen redPen = AnsiPen()..red();
+final AnsiPen bluePen = AnsiPen()..blue();
+final AnsiPen yellowPen = AnsiPen()..yellow();
 void printMenu(){
-  print("консольное приложение todo"); 
-  print("команды ");
-  print(" add <текст>         - добавить задачу ");
-  print(" list                - показать список");
-  print(" done <id>           - отметить выполненной");
-  print(" delete <id>         - удалить задачу");
-  print(" exit                - выход");
+  print(yellowPen("консольное приложение todo")); 
+  print(("команды "));
+  print((" add <текст>         - добавить задачу "));
+  print((" list                - показать список"));
+  print((" done <id>           - отметить выполненной"));
+  print((" delete <id>         - удалить задачу"));
+  print((" exit                - выход"));
   print("");
 }
 void addCommand(TodoRepository repo , String input){
@@ -72,7 +77,7 @@ bool handleCommand(TodoRepository repo , String input){
       print("неизвестная команда"); 
     }
   } catch (e){
-    print("ошибка $e"); 
+    print(redPen("ошибка $e")); 
   }
   return false ; 
 }
